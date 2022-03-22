@@ -48,13 +48,14 @@
             <span class="input-group-text" id="price-label">$</span>
           </div>
           <input
-            type="text"
+            type="number"
             class="form-control"
             placeholder="0.0"
             aria-label="Price"
             aria-describedby="price-label"
             id="price"
             name="campground[price]"
+            min="0"
             required
           />
           <div class="valid-feedback">Looks plausible</div>
@@ -78,27 +79,3 @@
     <a href="/campgrounds">Back to the list</a>
   </div>
 </div>
-<script>
-  (function () {
-    "use strict";
-
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.querySelectorAll(".validation-form");
-
-    // Loop over them and prevent submission
-    Array.from(forms).forEach(function (form) {
-      form.addEventListener(
-        "submit",
-        function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-
-          form.classList.add("was-validated");
-        },
-        false
-      );
-    });
-  })();
-</script>

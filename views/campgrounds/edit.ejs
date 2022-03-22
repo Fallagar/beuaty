@@ -52,7 +52,7 @@
             <span class="input-group-text" id="price-label">$</span>
           </div>
           <input
-            type="text"
+            type="number"
             class="form-control"
             placeholder="0.0"
             aria-label="Price"
@@ -60,6 +60,7 @@
             id="price"
             name="campground[price]"
             value="<%= campground.price %>"
+            min="1"
             required
           />
           <div class="valid-feedback">Looks plausible</div>
