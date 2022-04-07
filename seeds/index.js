@@ -36,7 +36,7 @@ const seedDB = async () => {
             author: '624078fece5d6751822a8bb2',
             title: `${sample(descriptors)} ${sample(places)}`,
             images: [{
-                url: 'https://res.cloudinary.com/fallagar/image/upload/v1648751905/YelpCampF/pt0yr0ue9a1ixuow9ev4.jpg',
+                url: 'https://res.cloudinary.com/fallagar/image/upload/v1648841465/YelpCampF/vapmprkjtevr64eydt0u.jpg',
                 filename: 'YelpCampF/pt0yr0ue9a1ixuow9ev4'
             },
             {
