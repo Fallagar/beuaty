@@ -118,11 +118,12 @@ app.all('*', (req, res, next) => {
 
 app.use((err, req, res, next) => {
     console.dir(err.statusCode);
-    const {statusCode = 500 } = err;
+    const { statusCode = 500 } = err;
     if (!err.message) { err.message = 'Oh No. Fubar!' }
     res.status(statusCode).render('error', { err });
-    })
+});
 
-app.listen(3000, () => {
-    console.log('Listening on port 3k')
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Listening on port ${port}`)
 })
