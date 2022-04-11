@@ -25,6 +25,7 @@ const [scriptSrcUrls, styleSrcUrls, connectSrcUrls, fontSrcUrls] = require('./ut
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
 const MongoStore = require('connect-mongo');
 const secret = process.env.SECRET || 'thisissecret';
+const admin = process.env.ADMIN_NAME;
 
 
 // mongoose.connect(dbUrl, {
@@ -97,6 +98,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
+    res.locals.admin = admin;
     res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');

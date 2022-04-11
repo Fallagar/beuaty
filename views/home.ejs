@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome to beUAty</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500&display=swap" rel="stylesheet" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -12,33 +15,109 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="ssheets/home.css" />
+
     <link rel="icon" href="data:," />
   </head>
   <body class="d-flex text-center text-white bg-dark">
     <div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
-      <header class="mb-auto">
-        <div>
-          <h3 class="float-md-start mb-0">be<span class="blue">U</span><span class="yellow">A</span>ty</h3>
-          <nav class="nav justify-content-center float-md-end">
-            <a href="#" aria-current="page" class="nav-link active">Home</a>
-            <a href="/campgrounds" class="nav-link">be<span class="blue ualink">U</span><span class="yellow ualink">A</span>ty to visit</a>
-            <% if(!currentUser){ %>
-            <a href="/user/login" class="nav-link">Login</a>
-            <a href="/user/register" class="nav-link">Register</a>
-            <% } else {%>
-            <a href="/" class="nav-link">Hello, <%= currentUser.username %> </a>
-            <a href="/user/logout" class="nav-link">Logout</a>
-            <% } %>
-          </nav>
+      <nav class="navbar navbar-dark bg-transparent mb-auto navbar-expand-xl mt-1">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">be<span class="blue">U</span><span class="yellow">A</span>ty</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">be<span class="blue">U</span><span class="yellow">A</span>ty</h5>
+              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Головна</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/campgrounds">Усі місця</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Аккаунт
+                  </a>
+                  <ul class="dropdown-menu slideIn" aria-labelledby="offcanvasNavbarDropdown">
+                    <% if(!currentUser){ %>
+                    <li><a class="dropdown-item" href="/user/login">Login</a></li>
+                    <li><a class="dropdown-item" href="/user/register">Register</a></li>
+                    <% }else{ %>
+                    <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
+                    <% } %>
+                    <li>
+                      <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Контакти
+                  </a>
+                  <ul class="dropdown-menu slideIn" aria-labelledby="offcanvasNavbarDropdown">
+                    <li>
+                      <a class="dropdown-item" href="#"
+                        ><img src="https://res.cloudinary.com/fallagar/image/upload/v1649700534/YelpCampF/viber_zjbu7j.svg" alt="" width="24" height="24" />
+                        Viber</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#"
+                        ><img src="https://res.cloudinary.com/fallagar/image/upload/v1649700534/YelpCampF/telegram_t8hi4u.svg" alt="" width="24" height="24" />
+                        Telegram</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#"
+                        ><img
+                          src="https://res.cloudinary.com/fallagar/image/upload/v1649700534/YelpCampF/facebook-logo-2019_ilsijz.svg"
+                          alt=""
+                          width="24"
+                          height="24"
+                        />
+                        Facebook</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#"
+                        ><img src="https://res.cloudinary.com/fallagar/image/upload/v1649700534/YelpCampF/instagram_pmdxle.svg" alt="" width="24" height="24" />
+                        Instagram</a
+                      >
+                    </li>
+                    <li>
+                      <hr class="dropdown-divider" />
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#"
+                        ><img src="https://res.cloudinary.com/fallagar/image/upload/v1649700534/YelpCampF/email_f4a4wh.svg" alt="" width="24" height="24" />
+                        Написати листа</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Пошук місць" aria-label="Search" />
+                <button class="btn btn-outline-light text-white search" type="submit">Поїхали!</button>
+              </form>
+            </div>
+          </div>
         </div>
-      </header>
-      <main class="px-3">
+      </nav>
+      <main class="px-3 mb-5">
         <p class="lead">
-          <span class="welcome"> Вітаємо у be<span class="blue">U</span><span class="yellow">A</span>ty!</span> <br /><br />
-          Бажаєте подорожувати Україною та шукаєте куди? <br />Тоді уперед, ми підібрали ці захоплюючі пам'ятки саме для Вас!
+          <span class="welcome"> Вітаємо у be<span class="blue">U</span><span class="yellow">A</span>ty!</span> <br /><br /><span class="intro">
+            Бажаєте подорожувати Україною та вирішуєте куди саме? <br /><br />Ми підібрали ці захоплюючі пам'ятки саме для Вас!</span
+          >
         </p>
         <br />
-        <a href="/campgrounds" class="btn btn-lg btn-secondary font-weight-bold bg-white">Хочу у подорож!</a>
+        <a href="/campgrounds" class="btn btn-lg btn-outline-light text-white font-weight-bold start">Хочу у подорож!</a>
       </main>
       <footer class="mt-auto text-white-50">&copy; 2022 beUAty</footer>
     </div>

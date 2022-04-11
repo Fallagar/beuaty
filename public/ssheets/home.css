@@ -1,30 +1,31 @@
 body {
+    font-family: 'Source Serif 4', serif;
     height: 100vh;
     background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0, 0, 0, 0.6)),url("https://images.unsplash.com/photo-1529511582893-2d7e684dd128?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1333&q=80") ;
     background-size: cover;
     background-position: center;
-    text-shadow: 0 0.05rem 0.1rem rgba(0,0,0,0.7);
     box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.7);
 }
+
 .cover-container {
-    max-width: 60vw;
+    max-width: 65vw;
 }
 .blue {
     color: #2196F3;
     
 }
-.ualink{
-    opacity: 60%;
-}
+
 .yellow {
     color: #FFEB3B;
     
 }
+
+/* .navbar{
+    color: white;
+} */
 .nav-link {
-    padding: 0.25rem 0;
-    font-weight: 700;
-    margin-left: 1rem;
-    color: rgba(255,255,255,0.5);
+    margin-left: 0.25rem;
+    color: white;
     border-bottom: 0.25rem solid transparent ;
 }
 .nav-link:hover {
@@ -36,12 +37,37 @@ body {
     border-bottom-color: white;
 }
 
-.btn-secondary, .btn-secondary:hover{
-    color: #333;
-    text-shadow: none;
+.start:hover{
+    transition: all 2s ease-out;
+    background-color: black;
 }
 .welcome {
-    font-weight: 700;
+    font-size: 4rem;
+}
+.intro {
+    font-size: 1.4rem;
+}
+/* Search */
+.search:hover{
+    background-color: black;
 }
 
-/* Login form */
+/* Dropdown try */
+@keyframes slideIn {
+    0% {
+        transform: translateY(1rem);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0rem);
+        opacity: 1;
+    }
+}
+
+.slideIn {
+    -webkit-animation-name: slideIn;
+    animation-name: slideIn;
+    animation-duration: 2s;
+    animation-fill-mode: both;
+}

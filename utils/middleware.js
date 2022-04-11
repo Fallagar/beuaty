@@ -11,6 +11,15 @@ module.exports.isLoggedIn = (req, res, next) => {
     }
     next();
 };
+module.exports.isAdmin = (req, res, next) => {
+    if (req.user.username === res.locals.admin) {
+        return next()
+    } else {
+        req.session.returnTo = req.originalUrl;
+        req.flash('error', 'Only administrator could add new campgrounds!');
+        return res.redirect('/user/login');
+    }
+}
 
 module.exports.validateCampground = (req, res, next) => {
     const { error } = campgroundSchema.validate(req.body);
@@ -35,6 +44,10 @@ module.exports.isReviewAuthor = async (req, res, next) => {
     const { id, reviewId } = req.params;
     const review = await Review.findById(reviewId);
     if (!review.author.equals(req.user._id)) {
+        if (req.user.username === res.locals.admin) {
+            return next();
+        }
+        console.log(!review.author.equals(req.user._id))
         req.flash('error', 'You should not be here!');
         return res.redirect(`/campgrounds/${id}`);
     }
@@ -50,3 +63,4 @@ module.exports.validateReview = (req, res, next) => {
         next();
     }
     }
+
