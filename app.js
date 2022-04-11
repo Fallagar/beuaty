@@ -1,6 +1,7 @@
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
+
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -17,9 +18,17 @@ const morgan = require('morgan');
 const passport = require('passport');
 const localStrategy = require('passport-local');
 const User = require('./models/user')
+const mongoSanitize = require('express-mongo-sanitize');
+const helmet = require('helmet');
+const [scriptSrcUrls, styleSrcUrls, connectSrcUrls, fontSrcUrls] = require('./utils/helmetConfig')
+// const dbUrl = process.env.DB_URL;
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
+const MongoStore = require('connect-mongo');
+const secret = process.env.SECRET || 'thisissecret';
 
 
-mongoose.connect('mongodb://localhost:27017/yelp-camp', {
+// mongoose.connect(dbUrl, {
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     });
@@ -36,12 +45,48 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(morgan('tiny'));
+app.use(helmet({ crossOriginEmbedderPolicy: false }));
 
+app.use(
+    helmet.contentSecurityPolicy({
+        directives: {
+            defaultSrc: [],
+            connectSrc: ["'self'", ...connectSrcUrls],
+            scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
+            styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
+            workerSrc: ["'self'", "blob:"],
+            childSrc: ["blob:"],
+            objectSrc: [],
+            imgSrc: [
+                "'self'",
+                "blob:",
+                "data:",
+                "https://res.cloudinary.com/fallagar/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT! 
+                "https://images.unsplash.com",
+            ],
+            fontSrc: ["'self'", ...fontSrcUrls],
+        },
+    })
+);
+app.use(mongoSanitize());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-const sessionConfig = { secret: 'thissecret', resave: false, saveUninitialized: true, cookie: {httpOnly: true, expires: Date.now() + 1000*60*60*24*7, maxAge: 1000*60*60*24*7}}
+
+
+const sessionConfig = {
+    name: 'session',
+    secret,
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({
+        mongoUrl: dbUrl,
+        touchAfter: 24 * 3600 // time period in seconds
+    }),
+    cookie: { httpOnly: true, expires: Date.now() + 1000 * 60 * 60 * 24 * 7, maxAge: 1000 * 60 * 60 * 24 * 7 }
+};
+
 app.use(session(sessionConfig))
 app.use(flash());
 app.use(passport.initialize());
@@ -63,6 +108,7 @@ app.use('/campgrounds/:id/reviews', reviewsRoute)
 app.use('/user', usersRoute)
 
 app.get('/', (req, res) => {
+    console.log(req.query);
     res.render('home')
 })
 

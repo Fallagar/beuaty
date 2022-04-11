@@ -4,7 +4,7 @@
     container: "cluster-map",
     style: "mapbox://styles/mapbox/light-v10",
     center: [31.1656,48.3794],
-    zoom: 3,
+    zoom: 4,
   });
   map.addControl(new mapboxgl.NavigationControl());
   map.on("load", () => {
