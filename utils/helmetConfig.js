@@ -20,7 +20,10 @@ const connectSrcUrls = [
     "https://*.tiles.mapbox.com",
     "https://events.mapbox.com",
 ];
-const fontSrcUrls = [];
+const fontSrcUrls = [
+    "https://fonts.googleapis.com",
+    "https://fonts.gstatic.com",
+];
 
 module.exports = [scriptSrcUrls, styleSrcUrls, connectSrcUrls, fontSrcUrls];
 
