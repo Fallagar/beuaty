@@ -5,15 +5,15 @@ function textToggle() {
     const btnToggle = document.getElementById('toggleBtn');
     console.log(data);
     const toggle = document.getElementById("description");
-    console.log(toggle.innerHTML)
-    console.log(data)
-    if (toggle.innerHTML < data) {
+    console.log(toggle.innerHTML.length)
+    console.log(data.length)
+    if (toggle.innerHTML.length < data.length) {
         toggle.innerHTML = data;
         console.log('First If')
         btnToggle.innerHTML = 'Згорнути опис'
     } else {
         toggle.innerHTML = "";
-        toggle.innerHTML = data.slice(0, 400)+"...";
+        toggle.innerHTML = data.slice(0, 300)+"...";
         btnToggle.innerHTML = 'Разгорнути опис'
         console.log('Second If')
     }
