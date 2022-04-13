@@ -3,15 +3,11 @@
     container: "map", 
     style: "mapbox://styles/mapbox/streets-v11", 
     center: coordinates.geometry.coordinates, 
-    zoom: 7
+    zoom: 3
     });
+    map.addControl(new mapboxgl.NavigationControl());
 const marker1 = new mapboxgl.Marker()
     .setLngLat(coordinates.geometry.coordinates)
-    .setPopup(
-        new mapboxgl.Popup({ offset: 25 })
-            .setHTML(
-            `<h3>${coordinates.title}</h3><p>${coordinates.location}</p>`
-        )
-    )
     .addTo(map);
     
+{/* <img src="${coordinates.images[0].url}" style="padding: 0;" height="101px" width="180px" alt=""></img> */}

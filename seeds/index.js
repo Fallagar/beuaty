@@ -26,7 +26,7 @@ const sample = array => array[Math.floor(Math.random() * array.length)];
 const seedDB = async () => {
     await Campground.deleteMany({});
     console.log("CITIES COUNT", cities.length);
-    for (let i = 0; i < 1469; i++) {
+    for (let i = 0; i < 10; i++) {
         const randomize = Math.floor(Math.random() * 1469);
         const camp = new Campground({
             location: `${cities[randomize].city}, ${cities[randomize].admin_name}`,
@@ -36,7 +36,7 @@ const seedDB = async () => {
             author: '624078fece5d6751822a8bb2',
             title: `${sample(descriptors)} ${sample(places)}`,
             images: [{
-                url: 'https://res.cloudinary.com/fallagar/image/upload/v1648841465/YelpCampF/vapmprkjtevr64eydt0u.jpg',
+                url: 'https://res.cloudinary.com/fallagar/image/upload/v1649871610/YelpCampF/zwao5liwrm9mybmhh1qa.jpg',
                 filename: 'YelpCampF/pt0yr0ue9a1ixuow9ev4'
             },
             {
@@ -54,3 +54,4 @@ const seedDB = async () => {
 seedDB().then(() => {
     mongoose.connection.close();
 })
+

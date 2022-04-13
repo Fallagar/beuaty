@@ -8,12 +8,12 @@ function textToggle() {
     console.log(toggle.innerHTML)
     console.log(data)
     if (toggle.innerHTML < data) {
-        toggle.innerHTML = data + data;
+        toggle.innerHTML = data;
         console.log('First If')
         btnToggle.innerHTML = 'Згорнути опис'
     } else {
         toggle.innerHTML = "";
-        toggle.innerHTML = data.slice(0, 120);
+        toggle.innerHTML = data.slice(0, 400)+"...";
         btnToggle.innerHTML = 'Разгорнути опис'
         console.log('Second If')
     }
