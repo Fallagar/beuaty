@@ -36,10 +36,14 @@ module.exports.showCampground = async (req, res, next) => {
         req.flash('error', 'Cannot find that site!')
         res.redirect('/campgrounds');
     }
-    let admin = false;
-    if (req.user.username && (req.user.username === res.locals.admin)) {
-        admin = true;
-    }
+    let admin;
+    try{
+           if (req.user.username && (req.user.username === res.locals.admin)) {
+            admin = true;
+        }
+    } catch {
+        admin = false;
+        }
     res.render('campgrounds/show', { campground, admin});
 };
 

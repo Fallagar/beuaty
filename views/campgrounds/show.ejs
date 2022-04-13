@@ -6,7 +6,7 @@
 </script>
 <div class="row">
   <!-- Card for campground info -->
-  <div class="col-6">
+  <div class="col-xl-6">
     <div class="card mb-3">
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
         <div class="carousel-inner">
@@ -29,7 +29,10 @@
       </div>
       <div class="card-body">
         <h5 class="card-title"><%= campground.title %></h5>
-        <p class="card-text"><%= campground.description %></p>
+        <p class="card-text largeScreen" id="description"><%=campground.description.slice(0,400)%>...</p>
+        <div class="d-grid">
+          <button id="toggleBtn" onclick="textToggle()" class="btn btn-sm btn-success">Розгорнути опис</button>
+        </div>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item text-muted"><%= campground.location %></li>
@@ -47,7 +50,7 @@
     </div>
   </div>
   <!-- Section with reviews, should be left side -->
-  <div class="col-6">
+  <div class="col-xl-6">
     <div id="map"></div>
     <% if(currentUser) { %>
     <h2>Live a Review</h2>
@@ -92,3 +95,4 @@
 </div>
 
 <script src="/scripts/showPageMap.js"></script>
+<script src="/scripts/toggleText.js" data-description="<%=campground.description%>" id="toggleScript"></script>
