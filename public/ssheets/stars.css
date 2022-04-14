@@ -205,17 +205,18 @@
   background-color: yellow;
 }
 
+.bg {
+  background: transparent;
+  border: none !important;
+  box-shadow: inset 0 0 5rem rgba(255, 255, 255, 0.5);
+}
 
-/* .mapboxgl-popup-content {
-  max-height: 400px;
-  padding: 4px;
-  max-height: 100px;
-  border-style: solid;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
-  font-size: 8px;
-  padding: 0;
-  border-radius: 30px;
-  border-color: orange;
-
-} */
+#toggleBtn {
+  background-color: black;
+}
+#map {
+  height: 350px;
+}
+.btn {
+  background-color: black;
+}

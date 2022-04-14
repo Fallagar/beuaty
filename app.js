@@ -57,6 +57,7 @@ app.use(
             styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
             workerSrc: ["'self'", "blob:"],
             childSrc: ["blob:"],
+            manifestSrc: ["'self'"],
             objectSrc: [],
             imgSrc: [
                 "'self'",

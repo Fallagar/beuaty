@@ -3,25 +3,26 @@
 <div id="cluster-map"></div>
 
 <% for(let campground of campgrounds) {%>
-<div class="card mb-3 mt-3 cardHW">
-  <div class="row">
-    <div class="col-md-4">
+<div class="card mb-3 mt-3 mb-5 bg text-light" style="max-width: 1200px">
+  <div class="row g-0">
+    <div class="col-md-4 d-flex flex-column my-auto">
       <% if(campground.images.length){ %>
-      <img class="img-fluid imgHW" alt="" src="<%= campground.images[0].url %> " />
+      <img class="img-fluid" alt="" src="<%= campground.images[0].url %> " />
       <% } else { %>
       <img class="img-fluid" src="" alt="" />
       <% } %>
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
+    <div class="col-md-8 d-flex flex-column justify-content-between">
+      <div class="card-body d-flex flex-column">
         <h5 class="card-title"><%= campground.title %></h5>
         <p class="card-text">
           <small class="class-muted"><%= campground.location %></small>
         </p>
-        <p class="card-text"><%= campground.description.slice(0,200) %>...</p>
-        <div class="d-grid">
-          <a class="btn btn-primary overflow-hidden" href="campgrounds/<%=campground._id%>">Переглянути <%= campground.title %></a>
-        </div>
+        <p class="card-text"><%= campground.description.slice(0,300) %>...</p>
+      </div>
+
+      <div class="d-grid px-4 pb-1">
+        <a class="btn text-light bgBtn" href="campgrounds/<%=campground._id%>">Переглянути <%= campground.title %></a>
       </div>
     </div>
   </div>
