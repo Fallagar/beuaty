@@ -18,7 +18,7 @@
         <p class="card-text">
           <small class="class-muted"><%= campground.location %></small>
         </p>
-        <p class="card-text"><%= campground.description.slice(0,300) %>...</p>
+        <p class="card-text"><%- campground.clean.slice(0,300) %>...</p>
       </div>
 
       <div class="d-grid px-4 pb-1">

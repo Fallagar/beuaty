@@ -1,23 +1,48 @@
 
 function textToggle() {
+    const toggle = document.getElementById("description");
     const getData = document.getElementById("toggleScript");
     const data = getData.getAttribute('data-description');
+    const headline = getData.getAttribute('data-headline');
     const btnToggle = document.getElementById('toggleBtn');
     console.log(data);
-    const toggle = document.getElementById("description");
-    console.log(toggle.innerHTML.length)
+    console.log(headline)
     console.log(data.length)
-    if (toggle.innerHTML.length < data.length) {
-        toggle.innerHTML = data;
-        console.log('First If')
+    if (toggle.innerHTML === headline) {
+        toggle.innerHTML = `${data}`;
         btnToggle.innerHTML = 'Згорнути опис'
     } else {
-        toggle.innerHTML = "";
-        toggle.innerHTML = data.slice(0, 300)+"...";
+        toggle.innerHTML = headline;
         btnToggle.innerHTML = 'Разгорнути опис'
-        console.log('Second If')
-    }
+       
+        }
 }
+// function textToggle() {
+//     const toggle = document.getElementById("description");
+//     const getData = document.getElementById("toggleScript");
+//     const data = getData.getAttribute('data-description');
+//     const btnToggle = document.getElementById('toggleBtn');
+//     console.log(data);
+//     console.log(toggle.innerText.length)
+//     console.log(data.length)
+//     if (toggle.innerText.length < data.length) {
+//         console.log("Contents of first if" + data);
+//         toggle.innerText = "";
+//         toggle.innerText = `${data}`;
+//         console.log('First If')
+//         btnToggle.innerText = 'Згорнути опис'
+//     } else {
+//         console.log("Contents of else");
+//         console.log(data.slice(0, (data.indexOf("<break></break>") - 4)) + "...</p>");
+//         const dataOne = `${data.slice(0, (data.indexOf("<break></break>") - 4))}` + "...</p>"
+//         toggle.innerText = "";
+//         toggle.innerText =`${dataOne}`;
+//         btnToggle.innerText = 'Разгорнути опис'
+//         console.log('Second If');
+//         console.log("Inner text final of toggle:")
+//         console.log(toggle.innerText);
+//             }
+// }
 // function removeDgrid(query, id) {
 //     console.log(query)
 //     if (query) {

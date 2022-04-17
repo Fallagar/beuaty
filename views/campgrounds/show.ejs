@@ -29,7 +29,8 @@
       </div>
       <div class="card-body">
         <h5 class="card-title"><%= campground.title %></h5>
-        <p class="card-text largeScreen" id="description"><%=campground.description.slice(0,300)%>...</p>
+        <p class="card-text largeScreen" 
+        id="description"><%-campground.headline%></p>
         <div class="d-grid">
           <button id="toggleBtn" onclick="textToggle()" class="btn btn-sm text-light">Розгорнути опис</button>
         </div>
@@ -95,4 +96,4 @@
 </div>
 
 <script src="/scripts/showPageMap.js"></script>
-<script src="/scripts/toggleText.js" data-description="<%=campground.description%>" id="toggleScript"></script>
+<script src="/scripts/toggleText.js" data-description="<%-campground.description%>" data-headline="<%- campground.headline %>" id="toggleScript"></script>

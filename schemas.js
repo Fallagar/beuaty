@@ -10,9 +10,11 @@ const extension = (joi) => ({
     rules: {
         escapeHTML: {
             validate(value, helpers) {
-                const clean = sanitizeHTML(value, {
-                    allowedTags: [],
-                    allowedAttributes: {},
+                const clean = sanitizeHTML(value,
+                    {
+                        // allowedTags: sanitizeHTML.defaults.allowedTags.concat(['break'])
+                        allowedTags: ["p", "break"]
+                   
                 });
                 if (clean !== value) return helpers.error('string.escapeHTML', { value })
                 return clean;
@@ -29,7 +31,8 @@ module.exports.campgroundSchema = Joi.object({
         price: Joi.number().required().min(0),
         // image: Joi.string().required(),
         location: Joi.string().required().escapeHTML(),
-        description: Joi.string().required().escapeHTML()
+        description: Joi.string().required().escapeHTML(),
+        headline: Joi.string().required().escapeHTML()
     }).required(),
     deleteImages: Joi.array()
 });

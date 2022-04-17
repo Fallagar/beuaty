@@ -1,5 +1,5 @@
 <% layout('/layouts/boilerplate') %>
-<div class="row">
+<div class="row text-light">
   <h1 class="text-center">New Campground</h1>
   <div class="col-md-9 col-xl-6 offset-md-2 offset-xl-3">
     <form action="/campgrounds" method="POST" novalidate class="validation-form" enctype="multipart/form-data">
@@ -36,6 +36,11 @@
           />
           <div class="valid-feedback">Looks plausible</div>
         </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="headline">Headline</label>
+        <textarea class="form-control" type="text" id="headline" name="campground[headline]" required></textarea>
+        <div class="valid-feedback">Looks plausible</div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="description">Description</label>
