@@ -57,12 +57,10 @@ CampgroundSchema.virtual('properties.popUpMarkup').get(function () {
         <img src="${this.images[0].url}" width="180px" height="101px" alt="">`;
 })
 CampgroundSchema.virtual('clean').get(function () {
-    console.log("This is what in clean")
-    const clean = sanitizeHtml(this.description, {
+       const clean = sanitizeHtml(this.description, {
         allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'break' ])
     });
-    console.log(clean);
-    console.log("End of clean")
+       
     return clean;
 
 })

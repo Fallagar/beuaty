@@ -27,16 +27,19 @@
         </button>
         <% } %>
       </div>
-      <div class="card-body">
+      <div class="card-body toggleOn" id="headline">
         <h5 class="card-title"><%= campground.title %></h5>
-        <p class="card-text largeScreen" 
-        id="description"><%-campground.headline%></p>
-        <div class="d-grid">
-          <button id="toggleBtn" onclick="textToggle()" class="btn btn-sm text-light">Розгорнути опис</button>
-        </div>
+        <p class="card-text"><%-campground.headline%></p>
       </div>
+      <div class="card-body toggleOff" id="description">
+        <h5 class="card-title"><%= campground.title %></h5>
+        <p class="card-text"><%-campground.description%></p>
+      </div>
+        <div class="mx-auto">
+          <span id="toggleBtn" class="btn btn-sm text-light ">Розгорнути опис</span>
+        </div>
       <ul class="list-group list-group-flush bg-transparent">
-        <li class="list-group-item bg-transparent text-light" text-muted><%= campground.location %></li>
+        <li class="list-group-item bg-transparent text-light"  text-muted><%= campground.location %></li>
         <li class="list-group-item bg-transparent text-light">~<%= campground.price %> грн/доба</li>
       </ul>
       <% if (admin) { %>
@@ -96,4 +99,4 @@
 </div>
 
 <script src="/scripts/showPageMap.js"></script>
-<script src="/scripts/toggleText.js" data-description="<%-campground.description%>" data-headline="<%- campground.headline %>" id="toggleScript"></script>
+<script src="/scripts/toggleText.js" id="toggleScript"></script>

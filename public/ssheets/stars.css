@@ -220,3 +220,16 @@
 .btn {
   background-color: black;
 }
+
+.toggleOn {
+  display:block !important;
+}
+.toggleOff {
+  display: none !important;
+}
+#toggleBtn {
+  transition: all 0.2s ease-in;
+}
+#toggleBtn:hover {
+    transform: scale(1.02);
+}
